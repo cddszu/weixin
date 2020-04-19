@@ -5,7 +5,6 @@ const xmlBufferToString = require('xml-buffer-tostring');
 
 module.exports = options => {
     return async function(ctx, next) {
-        // await next()
         try {
             if(ctx.request.header["content-type"] === 'text/xml') {
                 let buff = await getRawBody(ctx.request.req);
@@ -13,7 +12,7 @@ module.exports = options => {
                 ctx.request.body = reqBody
             }
         }catch(e) {
-
+            console.log(e)
         }
         next()
     }
